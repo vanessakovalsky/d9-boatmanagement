@@ -1,0 +1,16 @@
+
+boatmanagement.boat_import_form:
+  path: '/boatmanagement/form/boat_import'
+  defaults:
+    _form: '\Drupal\boatmanagement\Form\BoatImportForm'
+    _title: 'BoatImportForm'
+  requirements:
+    _access: 'TRUE'
+    
+boatmanagement.import_boat_form:
+  path: '/boatmanagement/form/import_boat'
+  defaults:
+    _form: '\Drupal\boatmanagement\Form\ImportBoatForm'
+    _title: 'ImportBoatForm'
+  requirements:
+    _access: 'TRUE'
