@@ -8,7 +8,7 @@ id: node.bateau.field_proprietaire
 field_name: field_proprietaire
 entity_type: node
 bundle: bateau
-label: Propriétaire
+label: Proprietaire
 description: ''
 required: false
 translatable: false
@@ -23,5 +23,6 @@ settings:
     target_bundles: null
     sort:
       field: _none
+      direction: ASC
     auto_create: false
 field_type: entity_reference
