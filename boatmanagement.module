@@ -68,20 +68,22 @@ function bateau_edit_send_email(&$form, &$form_state){
 
   //Le champ propriétaire contient une référence vers une entité User, il faut donc la chargé pour récupérer le mail du propriétaire
   /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $referenceItem */
-  $referenceItem = $node->get('field_proprietaire')->first();
+  if(!$node->get('field_proprietaire')->isEmpty()){
+    $referenceItem = $node->get('field_proprietaire')->first();
 
-  /** @var \Drupal\Core\Entity\Plugin\DataType\EntityReference $entityReference */
-  $entityReference = $referenceItem->get('entity');
+    /** @var \Drupal\Core\Entity\Plugin\DataType\EntityReference $entityReference */
+    $entityReference = $referenceItem->get('entity');
 
-  /** @var \Drupal\Core\Entity\Plugin\DataType\EntityAdapter $entityAdapter */
-  $entityAdapter = $entityReference->getTarget();
+    /** @var \Drupal\Core\Entity\Plugin\DataType\EntityAdapter $entityAdapter */
+    $entityAdapter = $entityReference->getTarget();
 
-  /** @var \Drupal\Core\Entity\EntityInterface $referencedEntity */
-  $proprietaire = $entityAdapter->getValue();
+    /** @var \Drupal\Core\Entity\EntityInterface $referencedEntity */
+    $proprietaire = $entityAdapter->getValue();
 
-  $destinataire = $proprietaire->getEmail();
-  //On envoie le mail avec toutes les infos dont on a besoin
-  $mailer->mail('boatmanagement', 'bateau_edit_send_email', $destinataire, $langcode, $params, $expediteur, $send=NULL );
+    $destinataire = $proprietaire->getEmail();
+    //On envoie le mail avec toutes les infos dont on a besoin
+    $mailer->mail('boatmanagement', 'bateau_edit_send_email', $destinataire, $langcode, $params, $expediteur, $send=NULL );
+  }
 }
 
 /**
