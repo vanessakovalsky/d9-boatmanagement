@@ -5,6 +5,7 @@ dependencies:
     - field.storage.node.field_largeur
     - field.storage.node.field_longueur
     - field.storage.node.field_photos
+    - field.storage.node.field_proprietaire
     - image.style.medium
     - node.type.bateau
   module:
