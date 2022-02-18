@@ -108,3 +108,16 @@ function boatmanagement_views_data_alter(array &$data){
         ),
     );
 }
+
+function boatmanagement_node_access($node, $op, $account){
+  if ($node->type->entity->label() == 'Boat'){
+    if ($op == 'update'){
+      if ($node->get('field_proprietaire')->getValue()[0]['target_id'] == $account->id()) {
+        return AccessResult::allowed();
+      }
+      else {
+        return AccessResult::forbidden();
+      }
+    }
+  }
+}
